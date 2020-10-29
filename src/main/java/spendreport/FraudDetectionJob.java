@@ -33,17 +33,17 @@ public class FraudDetectionJob {
 		StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
 
 		DataStream<Transaction> transactions = env
-			.addSource(new TransactionSource())
-			.name("transactions");
+				.addSource(new TransactionSource())
+				.name("transactions");
 
 		DataStream<Alert> alerts = transactions
-			.keyBy(Transaction::getAccountId)
-			.process(new FraudDetector())
-			.name("fraud-detector");
+				.keyBy(Transaction::getAccountId)
+				.process(new FraudDetector())
+				.name("fraud-detector");
 
 		alerts
-			.addSink(new AlertSink())
-			.name("send-alerts");
+				.addSink(new AlertSink())
+				.name("send-alerts");
 
 		env.execute("Fraud Detection");
 	}
