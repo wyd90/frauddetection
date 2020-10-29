@@ -46,5 +46,7 @@ public class FraudDetectionJob {
 				.name("send-alerts");
 
 		env.execute("Fraud Detection");
+
+		//i am wangwenjie i income 18k
 	}
 }
